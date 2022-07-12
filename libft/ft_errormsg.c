@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_errormsg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2022/07/12 12:14:10 by hmorales         ###   ########.fr       */
+/*   Created: 2022/07/12 11:11:04 by hmorales          #+#    #+#             */
+/*   Updated: 2022/07/12 11:14:22 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	swap(t_list *a)
+char	*ft_errormsg(char *str)
 {
-	int	copy;
-
-	copy = ((t_stack *)a->content)->num;
-	((t_stack *)a->content)->num = ((t_stack *)a->next->content)->num;
-	((t_stack *)a->next->content)->num = copy;
+    int i;
+    
+    i = ft_strlen(str);
+    write(1, "Error\n", 6);
+    write(1, str, i);
+    exit (0);
 }

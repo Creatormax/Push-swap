@@ -6,7 +6,7 @@
 #    By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 17:26:15 by hmorales          #+#    #+#              #
-#    Updated: 2022/07/04 12:07:04 by hmorales         ###   ########.fr        #
+#    Updated: 2022/07/12 11:06:37 by hmorales         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS =	ft_isdigit.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_liberator.c \
 		
 OBJS = ${SRCS:.c=.o}
 

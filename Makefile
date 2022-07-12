@@ -1,6 +1,7 @@
 NAME	=	push_swap
 
 SRCS	=	push_swap.c \
+			operations.c \
 			
 
 FLAGS	=	-Wall -Wextra -Werror

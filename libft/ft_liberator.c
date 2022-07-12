@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_liberator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2022/07/12 12:14:10 by hmorales         ###   ########.fr       */
+/*   Created: 2022/07/12 11:05:44 by hmorales          #+#    #+#             */
+/*   Updated: 2022/07/12 11:14:25 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	swap(t_list *a)
+void	ft_liberator(char **str)
 {
-	int	copy;
+	int	j;
 
-	copy = ((t_stack *)a->content)->num;
-	((t_stack *)a->content)->num = ((t_stack *)a->next->content)->num;
-	((t_stack *)a->next->content)->num = copy;
+	j = 0;
+	while (str[j])
+		free(str[j++]);
+	free(str);
 }
