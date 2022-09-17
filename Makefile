@@ -5,7 +5,7 @@ SRCS	=	push_swap.c \
 			algorithm_1.c \
 			
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3 -O0
 
 OBJS	=	$(SRCS:.c=.o)
 

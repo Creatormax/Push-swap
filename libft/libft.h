@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:56:09 by hmorales          #+#    #+#             */
-/*   Updated: 2022/07/12 11:10:37 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:43:29 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,17 @@
 typedef struct s_list
 {
 	void			*content;
-	struct s_list	*next;		
+	struct s_list	*next;
+	struct s_list	*prior;
+	
 }	t_list;
+
+typedef	struct s_dlist
+{
+	t_list	*list;
+	t_list	*last;
+	
+}	t_dlist;// si no entiendes llama a monty
 
 int		ft_atoi(const char *nptr);
 int		ft_toupper(int c);
@@ -73,5 +82,6 @@ char	*get_next_line(int fd);
 void	*ft_realloc(void *ptr, size_t size);
 void	*ft_liberator(char **str);
 char	*ft_errormsg(char *str);
+void	ft_loadmatrix(int data, int *matrix);
 
 #endif
