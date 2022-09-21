@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstfirst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 11:13:09 by hmorales          #+#    #+#             */
-/*   Updated: 2022/09/21 16:01:28 by hmorales         ###   ########.fr       */
+/*   Created: 2022/09/21 14:52:52 by hmorales          #+#    #+#             */
+/*   Updated: 2022/09/21 15:05:06 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-
-typedef struct stack
+t_list	*ft_lstfirst(t_list *lst)
 {
-	int	num;
-}	t_stack;
-void	initializer(int argc, char **argv, t_list **a, t_list **copy);
-void	swap(t_list *a);
-void	push(t_list *pushed, t_list *put);
-void	rotate(t_list *a);
-void	rev_rotate(t_list *a);
-void	process(t_list **a, t_list **b);
-
-#endif
+	if (!lst)
+		return (NULL);
+	while (lst->prior)
+		lst = lst->prior;
+	return (lst);
+}
