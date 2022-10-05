@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:56:09 by hmorales          #+#    #+#             */
-/*   Updated: 2022/09/21 14:47:59 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:26:37 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 	struct s_list	*prior;
-	
-}	t_list;
 
-typedef	struct s_dlist
-{
-	t_list	*list;
-	t_list	*last;
-	
-}	t_dlist;// si no entiendes llama a monty
+}	t_list;
 
 int		ft_atoi(const char *nptr);
 int		ft_toupper(int c);

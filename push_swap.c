@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2022/09/21 17:03:16 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:43:48 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int	duplicates(t_list **a)
 {
 	while (*a && (*a)->next)
 	{
-		if (((t_stack *)(*a)->content)->num == ((t_stack *)(*a)->next->content)->num)
+		if (((t_stack *)(*a)->content)->num == \
+		((t_stack *)(*a)->next->content)->num)
 			return (1);
 		*a = (*a)->next;
 	}
@@ -99,17 +100,14 @@ int	main(int argc, char **argv)
 		ft_errormsg("Please submit a stack");
 	initializer(argc, argv, &a, &copy);
 	free(copy);
-	while (a->prior)
-		a = a->prior;
-	while (a->content)
-	{
-		printf("%d\n", ((t_stack *)(a)->content)->num);
-		if (a->next)
-			a = a->next;
-		else
-			break;
-	}
+	print_stack(a);
 	printf("\n");
-	b = ft_lstnew(malloc(sizeof(t_stack)));//inicializacion
-	rev_rotate(a);
+	b = ft_lstnew(malloc(sizeof(t_stack)));
+	a = ft_lstfirst(a);
+	//while (sorted(a) != 1)
+	process(&a, &b);
+	print_stack(a);
+	printf("\n");
+	print_stack(b);
+	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 04:34:15 by hmorales          #+#    #+#             */
-/*   Updated: 2022/09/17 17:27:13 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:54:05 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	return_mid(t_list **a, int chunk)
 {
-	int max_min[2];
-	int mid;
+	int	max_min[2];
+	int	mid;
 	int	i;
 
 	i = 0;
 	while (i < chunk)
 	{
 		if (((t_stack *)(*a)->content)->num < max_min[1])
-			max_min[1] = ((t_stack *)(*a)->content)->num; 
+			max_min[1] = ((t_stack *)(*a)->content)->num;
 		else if (((t_stack *)(*a)->content)->num > max_min[0])
 			max_min[0] = ((t_stack *)(*a)->content)->num;
 		*a = (*a)->next;
@@ -30,9 +30,9 @@ int	return_mid(t_list **a, int chunk)
 	}
 	if ((max_min[0] + max_min[1]) % 2 != 0)
 		mid = (max_min[0] + max_min[1]) / 2 + 1;
-	else 
+	else
 		mid = (max_min[0] + max_min[1]) / 2;
-	return (mid);	
+	return (mid);
 }
 
 int	push_return(t_list **a, t_list **b, int mid)
@@ -44,14 +44,16 @@ int	push_return(t_list **a, t_list **b, int mid)
 	{
 		if (((t_stack *)(*a)->content)->num > mid)
 		{
-			rotate(*a);
+			rotate(**(&a));
 			write(1, "ra\n", 3);
+			*a = ft_lstfirst(*a);
 			chunk--;
 		}
 		else
 		{
-			push(*a, *b);
+			push(*(&a), **(&b));
 			write(1, "pb\n", 3);
+			*a = ft_lstfirst(*a);
 			*a = (*a)->next;
 		}
 		chunk++;
@@ -68,14 +70,16 @@ void	push_return_2(t_list **a, t_list **b, int mid, int chunk)
 	{
 		if (((t_stack *)(*a)->content)->num > mid)
 		{
-			rotate(*a);
+			rotate(**(&a));
 			write(1, "rb\n", 3);
+			*a = ft_lstfirst(*a);
 			i--;
 		}
 		else
 		{
-			push(*a, *b);
+			push(*(&a), **(&b));
 			write(1, "pa\n", 3);
+			*a = ft_lstfirst(*a);
 			*a = (*a)->next;
 		}
 		i++;
@@ -84,21 +88,21 @@ void	push_return_2(t_list **a, t_list **b, int mid, int chunk)
 
 int	find_mid(t_list **a)
 {
-	int max_min[2];
-	int mid;
+	int	max_min[2];
+	int	mid;
 
 	ft_loadmatrix(((t_stack *)(*a)->content)->num, max_min);
 	while ((*a)->next)
 	{
 		if (((t_stack *)(*a)->content)->num < max_min[1])
-			max_min[1] = ((t_stack *)(*a)->content)->num; 
+			max_min[1] = ((t_stack *)(*a)->content)->num;
 		else if (((t_stack *)(*a)->content)->num > max_min[0])
 			max_min[0] = ((t_stack *)(*a)->content)->num;
 		*a = (*a)->next;
 	}
 	if ((max_min[0] + max_min[1]) % 2 != 0)
 		mid = (max_min[0] + max_min[1]) / 2 + 1;
-	else 
+	else
 		mid = (max_min[0] + max_min[1]) / 2;
 	return (mid);
 }
@@ -112,13 +116,14 @@ void	process(t_list **a, t_list **b)
 	while ((*a)->next)
 	{
 		mid = find_mid(a);
+		*a = ft_lstfirst(*a);
 		*chunk = push_return(a, b, mid);
 		chunk++;
 	}
-	while (*b && *chunk)
-	{
-		mid = return_mid(b, *chunk);
-		push_return_2(b, a, mid, *chunk);
-		chunk--;
-	}
+	//while (*b && *chunk)
+	//{
+	//	mid = return_mid(b, *chunk);
+	//	push_return_2(b, a, mid, *chunk);
+	//	chunk--;
+	//}
 }

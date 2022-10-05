@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 11:11:04 by hmorales          #+#    #+#             */
-/*   Updated: 2022/07/12 11:14:22 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:28:33 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_errormsg(char *str)
 {
-    int i;
-    
-    i = ft_strlen(str);
-    write(1, "Error\n", 6);
-    write(1, str, i);
-    exit (0);
+	int	i;
+
+	i = ft_strlen(str);
+	write(1, "Error\n", 6);
+	write(1, str, i);
+	exit (0);
 }

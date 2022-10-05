@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2022/09/21 17:04:48 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:40:50 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ void	swap(t_list *a)
 
 	if (!a || !(t_stack *)a->content || !(t_stack *)a->next->content)
 		ft_errormsg("List not pushed");
-	a =ft_lstfirst(a);
+	a = ft_lstfirst(a);
 	copy = ((t_stack *)a->content)->num;
 	((t_stack *)a->content)->num = ((t_stack *)a->next->content)->num;
 	((t_stack *)a->next->content)->num = copy;
 }
 
-void	push(t_list *pushed, t_list *put)
+void	push(t_list **pushed, t_list *put)
 {
 	if (!pushed || !put)
 		ft_errormsg("Not enough data");
-	pushed = ft_lstfirst(pushed);
+	*pushed = ft_lstfirst(*pushed);
 	put = ft_lstfirst(put);
-	((t_stack *)put->content)->num = ((t_stack *)pushed->content)->num;
-	pushed = pushed->next;
-	ft_lstdelone(pushed->prior,free);
-	pushed->prior = NULL;
+	((t_stack *)put->content)->num = ((t_stack *)(*pushed)->content)->num;
+	*pushed = (*pushed)->next;
+	ft_lstdelone((*pushed)->prior, free);
+	(*pushed)->prior = NULL;
 }
 
 void	rotate(t_list *a)
@@ -52,7 +52,6 @@ void	rotate(t_list *a)
 	a->prior = NULL;
 }
 
-
 void	rev_rotate(t_list *a)
 {
 	t_list	*copy;
@@ -64,16 +63,8 @@ void	rev_rotate(t_list *a)
 	ft_lstadd_front(&a, ft_lstnew(copy->content));
 	a = ft_lstlast(a);
 	((t_stack *)copy->content)->num = ((t_stack *)a->content)->num;
-	while (a->content)
-	{
-		printf("%d\n", ((t_stack *)(a)->content)->num);
-		if (a->next)
-			a = a->next;
-		else
-			break;
-	}
-	//a = ft_lstlast(a);
-	//a = a->prior;
-	//ft_lstdelone(a->next, free);
-	//a->next = NULL;
+	a = ft_lstlast(a);
+	a = a->prior;
+	ft_lstdelone(a->next, free);
+	a->next = NULL;
 }
