@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2022/10/05 16:43:48 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:50:01 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	initializer(int argc, char **argv, t_list **a, t_list **copy)
 	while (argv[i])
 	{
 		checker(argv[i]);
+		parse(argv[i]);
 		i++;
 	}
 	savedata(argc, argv, a, copy);
@@ -106,8 +107,10 @@ int	main(int argc, char **argv)
 	a = ft_lstfirst(a);
 	//while (sorted(a) != 1)
 	process(&a, &b);
+	a = ft_lstfirst(a);
+	b = ft_lstfirst(b);
+	write(1, "\n", 1);
 	print_stack(a);
-	printf("\n");
+	write(1, "\n", 1);
 	print_stack(b);
-	printf("\n");
 }

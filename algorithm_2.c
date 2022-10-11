@@ -5,43 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 15:33:51 by hmorales          #+#    #+#             */
-/*   Updated: 2022/10/05 16:25:24 by hmorales         ###   ########.fr       */
+/*   Created: 2022/10/11 15:09:37 by hmorales          #+#    #+#             */
+/*   Updated: 2022/10/11 16:20:57 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sorted(t_list *a)
+void	sort_2(t_list **a, t_list **b)
 {
-	int	i;
-
-	i = 1;
-	a = ft_lstfirst(a);
-	while ((((t_stack *)(a)->content)->num < \
-	((t_stack *)(a)->next->content)->num) && a)
+	*a = ft_lstfirst(*a);
+	*b = ft_lstfirst(*b);
+	if (((t_stack *)(*a)->content)->num > \
+	((t_stack *)(*a)->next->content)->num)
 	{
-		if (((t_stack *)(a)->content)->num > \
-		((t_stack *)(a)->next->content)->num)
-		{
-			i = 0;
-			break ;
-		}
-		a = a->next;
+		*a = (*a)->next;
+		rotate(*a);
+		*a = ft_lstfirst(*a);
+		write(1, "ra\n", 3);
+		push(a, *b);
+		write(1, "pb\n", 3);
 	}
-	return (i);
-}
-
-void	print_stack(t_list *a)
-{
-	a = ft_lstfirst(a);
-	while ((t_stack *)(a)->content)
+	else
 	{
-		printf("%d\n", ((t_stack *)(a)->content)->num);
-		if (a->next)
-			a = a->next;
-		else
-			break ;
+		push(a, *b);
+		write(1, "pb\n", 3);
 	}
-	a = ft_lstfirst(a);
 }

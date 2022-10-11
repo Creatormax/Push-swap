@@ -4,6 +4,7 @@ SRCS	=	push_swap.c \
 			operations.c \
 			algorithm_1.c \
 			algorithm_2.c \
+			tools.c \
 			
 
 FLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3 -O0

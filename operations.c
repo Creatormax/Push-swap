@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2022/10/05 16:40:50 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:35:29 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ void	swap(t_list *a)
 
 void	push(t_list **pushed, t_list *put)
 {
-	if (!pushed || !put)
+	t_list	*copy;
+
+	copy = ft_lstnew(malloc(sizeof(t_stack)));
+	if (!pushed || !put || !copy)
 		ft_errormsg("Not enough data");
 	*pushed = ft_lstfirst(*pushed);
 	put = ft_lstfirst(put);
-	((t_stack *)put->content)->num = ((t_stack *)(*pushed)->content)->num;
+	((t_stack *)copy->content)->num = ((t_stack *)(*pushed)->content)->num;
+	ft_lstadd_front(&put, ft_lstnew(copy->content));
 	*pushed = (*pushed)->next;
 	ft_lstdelone((*pushed)->prior, free);
 	(*pushed)->prior = NULL;
@@ -46,6 +50,7 @@ void	rotate(t_list *a)
 	a = ft_lstfirst(a);
 	((t_stack *)copy->content)->num = ((t_stack *)a->content)->num;
 	ft_lstadd_back(&a, ft_lstnew(copy->content));
+	free (copy);
 	a = ft_lstfirst(a);
 	a = a->next;
 	ft_lstdelone(a->prior, free);
