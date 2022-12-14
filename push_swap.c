@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2022/10/11 16:50:01 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:35:42 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,10 @@ int	main(int argc, char **argv)
 		ft_errormsg("Please submit a stack");
 	initializer(argc, argv, &a, &copy);
 	free(copy);
-	print_stack(a);
+	b = ft_lstnew(malloc(sizeof(t_stack) + 1));
+	a = ft_lstfirst(a);
+	print_stacks(a, b);
+	rotate(&a);
 	printf("\n");
-	b = ft_lstnew(malloc(sizeof(t_stack)));
-	a = ft_lstfirst(a);
-	//while (sorted(a) != 1)
-	process(&a, &b);
-	a = ft_lstfirst(a);
-	b = ft_lstfirst(b);
-	write(1, "\n", 1);
-	print_stack(a);
-	write(1, "\n", 1);
-	print_stack(b);
+	print_stacks(a, b);
 }
