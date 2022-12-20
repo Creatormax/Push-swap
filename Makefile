@@ -3,9 +3,10 @@ NAME	=	push_swap
 SRCS	=	push_swap.c \
 			operations.c \
 			tools.c \
+			algorithm.c \
 			
 
-FLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g3 -O0
+FLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -O0#
 
 OBJS	=	$(SRCS:.c=.o)
 

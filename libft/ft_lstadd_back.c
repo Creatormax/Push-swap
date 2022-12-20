@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:39:16 by hmorales          #+#    #+#             */
-/*   Updated: 2022/09/17 20:33:35 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:55:02 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!*lst)
 	{
 		*lst = new;
+		new->next = NULL;
+		new->prior = NULL;
 		return ;
 	}
 	aux = ft_lstlast(*lst);

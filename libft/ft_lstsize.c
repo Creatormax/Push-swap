@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:21:37 by hmorales          #+#    #+#             */
-/*   Updated: 2022/07/04 12:08:22 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:34:40 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_lstsize(t_list *lst)
 	int	size;
 
 	size = 0;
-	while (lst)
+	while (lst != NULL)
 	{
 		lst = lst->next;
 		size++;

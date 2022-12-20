@@ -6,7 +6,7 @@
 #    By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 17:26:15 by hmorales          #+#    #+#              #
-#    Updated: 2022/09/21 14:49:08 by hmorales         ###   ########.fr        #
+#    Updated: 2022/12/20 12:22:57 by hmorales         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ OBJS = ${SRCS:.c=.o}
 CC		= gcc
 RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 $(NAME): ${OBJS}
 		ar rcs ${NAME} ${OBJS}

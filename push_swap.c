@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2022/12/14 16:35:42 by hmorales         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:08:09 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	checker(char *str)
 	}
 }	
 
-void	savedata(int argc, char **argv, t_list **a, t_list **copy)
+t_list	**savedata(int argc, char **argv, t_list **a, t_list **copy)
 {
 	char	**str;
 	int		i;
@@ -55,21 +55,22 @@ void	savedata(int argc, char **argv, t_list **a, t_list **copy)
 		}
 		ft_liberator(str);
 	}
+	return (a);
 }
 
-int	duplicates(t_list **a)
+int	duplicates(t_list *a)
 {
-	while (*a && (*a)->next)
+	while (a && a->next)
 	{
-		if (((t_stack *)(*a)->content)->num == \
-		((t_stack *)(*a)->next->content)->num)
+		if (((t_stack *)(a)->content)->num == \
+		((t_stack *)(a)->next->content)->num)
 			return (1);
-		*a = (*a)->next;
+		a = (a)->next;
 	}
 	return (0);
 }
 
-void	initializer(int argc, char **argv, t_list **a, t_list **copy)
+t_list	*initializer(int argc, char **argv, t_list **a, t_list **copy)
 {
 	int		i;
 
@@ -80,12 +81,13 @@ void	initializer(int argc, char **argv, t_list **a, t_list **copy)
 		parse(argv[i]);
 		i++;
 	}
-	savedata(argc, argv, a, copy);
-	if (duplicates(a) == 1)
+	a = savedata(argc, argv, a, copy);
+	if (duplicates(*a) == 1)
 	{
 		ft_lstclear(&(*a), free);
 		ft_errormsg("There are duplicates in the stack");
 	}
+	return (*a);
 }
 
 int	main(int argc, char **argv)
@@ -99,12 +101,9 @@ int	main(int argc, char **argv)
 	copy = NULL;
 	if (argc < 2)
 		ft_errormsg("Please submit a stack");
-	initializer(argc, argv, &a, &copy);
-	free(copy);
-	b = ft_lstnew(malloc(sizeof(t_stack) + 1));
-	a = ft_lstfirst(a);
+	a = initializer(argc, argv, &a, &copy);
 	print_stacks(a, b);
-	rotate(&a);
+	process(&a, &b);
 	printf("\n");
 	print_stacks(a, b);
 }
