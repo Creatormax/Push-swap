@@ -6,25 +6,27 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2022/12/20 15:21:07 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:08:01 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **a)
+void	swap(t_list **a, char *op)
 {
 	int	copy;
 
+	*a = b_not_included(*a);
 	if (ft_lstsize(*a) < 2)
-		return;
+		return ;
 	copy = ((t_stack *)(*a)->content)->num;
 	((t_stack *)(*a)->content)->num = ((t_stack *)(*a)->next->content)->num;
 	((t_stack *)(*a)->next->content)->num = copy;
 	*a = ft_lstfirst(*a);
+	write(1, op, ft_strlen(op));
 }
 
-void	push(t_list **src, t_list **dest)
+void	push(t_list **src, t_list **dest, char *op)
 {
 	t_list	*copy;
 
@@ -43,32 +45,37 @@ void	push(t_list **src, t_list **dest)
 	}
 	*src = ft_lstfirst(*src);
 	*dest = ft_lstfirst(*dest);
+	write(1, op, ft_strlen(op));
 }
 
-void	rotate(t_list **a)
+void	rotate(t_list **a, char *op)
 {
 	t_list	*copy;
 
+	*a = b_not_included(*a);
 	if (ft_lstsize(*a) < 2)
-		return;
+		return ;
 	copy = ft_lstlast(*a);
 	copy->next = *a;
 	(*a)->prior = copy;
 	(*a)->next->prior = NULL;
 	(*a)->next = NULL;
 	*a = ft_lstfirst(*a);
+	write(1, op, ft_strlen(op));
 }
 
-void	rev_rotate(t_list **a)
+void	rev_rotate(t_list **a, char *op)
 {
 	t_list	*copy;
 
-	if (ft_lstsize(a) < 2)
-		return;
+	*a = b_not_included(*a);
+	if (ft_lstsize(*a) < 2)
+		return ;
 	copy = ft_lstlast(*a);
 	copy->next = *a;
 	(*a)->prior = copy;
 	copy->prior->next = NULL;
 	copy->prior = NULL;
 	*a = ft_lstfirst(*a);
+	write(1, op, ft_strlen(op));
 }

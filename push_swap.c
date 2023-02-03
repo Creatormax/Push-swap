@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2022/12/20 15:08:09 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:38:13 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,14 @@ int	main(int argc, char **argv)
 	a = initializer(argc, argv, &a, &copy);
 	print_stacks(a, b);
 	process(&a, &b);
-	printf("\n");
-	print_stacks(a, b);
+//	rotate(&a, "ra\n");
+//	print_stacks(a, b);
+//	rev_rotate(&a, "rra\n");
+//	print_stacks(a, b);
+//	swap(&a, "sa\n");
+//	print_stacks(a, b);
+//	push(&a, &b, "pb\n");
+//	print_stacks(a, b);
+//	push(&b, &a, "pa\n");
+//	print_stacks(a, b);
 }

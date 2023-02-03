@@ -2,8 +2,9 @@ NAME	=	push_swap
 
 SRCS	=	push_swap.c \
 			operations.c \
-			tools.c \
 			algorithm.c \
+			tools/tools.c \
+			tools/tools1.c \
 			
 
 FLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -O0#

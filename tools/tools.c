@@ -6,25 +6,34 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:33:51 by hmorales          #+#    #+#             */
-/*   Updated: 2022/12/20 12:27:16 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:07:30 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	print_stacks(t_list *a, t_list *b)
 {
+	int	n;
+	int	size;
+
+	n = 0;
 	a = ft_lstfirst(a);
 	b = ft_lstfirst(b);
-	while (a != NULL)
+	size = ft_lstsize(a);
+	while (n < size)
 	{
 		printf("A :%d\n", ((t_stack *)(a)->content)->num);
+		n++;
 		a = a->next;
 	}
 	printf("\n");
-	while (b != NULL)
+	n = 0;
+	size = ft_lstsize(b);
+	while (n < size && size != 0)
 	{
 		printf("B :%d\n", ((t_stack *)(b)->content)->num);
+		n++;
 		b = b->next;
 	}
 	printf("\n");
@@ -45,7 +54,6 @@ int	is_sorted(int mid, t_list *a)
 		}
 		a = a->next;
 	}
-	//printf("%d", chk);
 	return (chk);
 }
 
@@ -57,4 +65,42 @@ void	parse(char *str)
 	num = ft_atoi(str);
 	if (num > 2147483647 || num < -2147483648)
 		ft_errormsg("Int overflow detected");
+}
+
+int	find_max (t_list *a)
+{
+	int	i;
+	int	max;
+
+	i = ft_lstsize(a);
+	max = ((t_stack *)(a)->content)->num;
+	a = ft_lstfirst(a);
+	while (i > 0)
+	{
+		if ((((t_stack *)(a)->content)->num) > max)
+			max = ((t_stack *)(a)->content)->num;
+		printf("max %d\n", max);
+		a = a->next;
+		i--;
+	}
+	return (max);
+}
+
+int	find_min (t_list *a)
+{
+	int	i;
+	int	min;
+
+	i = ft_lstsize(a);
+	min = ((t_stack *)(a)->content)->num;
+	a = ft_lstfirst(a);
+	while (i > 0)
+	{
+		if ((((t_stack *)(a)->content)->num) < min)
+			min = ((t_stack *)(a)->content)->num;
+		printf("min %d\n", min);
+		a = a->next;
+		i--;
+	}
+	return (min);
 }
