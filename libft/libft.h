@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:56:09 by hmorales          #+#    #+#             */
-/*   Updated: 2022/12/20 14:19:43 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:23:41 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void	*ft_liberator(char **str);
 char	*ft_errormsg(char *str);
 void	ft_loadmatrix(int data, int *matrix);
 t_list	*ft_lstfirst(t_list *lst);
+int		ft_abs(int num);
 
 #endif

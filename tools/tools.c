@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:33:51 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/03 15:07:30 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:08:51 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	parse(char *str)
 		ft_errormsg("Int overflow detected");
 }
 
-int	find_max (t_list *a)
+int	find_max(t_list *a)
 {
 	int	i;
 	int	max;
@@ -79,14 +79,13 @@ int	find_max (t_list *a)
 	{
 		if ((((t_stack *)(a)->content)->num) > max)
 			max = ((t_stack *)(a)->content)->num;
-		printf("max %d\n", max);
 		a = a->next;
 		i--;
 	}
 	return (max);
 }
 
-int	find_min (t_list *a)
+int	find_min(t_list *a)
 {
 	int	i;
 	int	min;
@@ -98,7 +97,6 @@ int	find_min (t_list *a)
 	{
 		if ((((t_stack *)(a)->content)->num) < min)
 			min = ((t_stack *)(a)->content)->num;
-		printf("min %d\n", min);
 		a = a->next;
 		i--;
 	}

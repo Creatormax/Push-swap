@@ -6,11 +6,11 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/03 14:08:01 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/04 11:22:33 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	swap(t_list **a, char *op)
 {

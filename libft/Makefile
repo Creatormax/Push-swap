@@ -6,7 +6,7 @@
 #    By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/26 17:26:15 by hmorales          #+#    #+#              #
-#    Updated: 2022/12/20 12:22:57 by hmorales         ###   ########.fr        #
+#    Updated: 2023/02/04 12:23:17 by hmorales         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS =	ft_isdigit.c \
 		ft_loadmatrix.c \
 		ft_errormsg.c \
 		ft_lstfirst.c \
+		ft_abs.c \
 		
 OBJS = ${SRCS:.c=.o}
 
