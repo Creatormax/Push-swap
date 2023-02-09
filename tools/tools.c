@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:33:51 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/04 17:08:51 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/08 10:30:31 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	parse(char *str)
 
 	num = 0;
 	num = ft_atoi(str);
-	if (num > 2147483647 || num < -2147483648)
+	if (num > 2147483647 || num < -2147483647)
 		ft_errormsg("Int overflow detected");
 }
 
@@ -102,3 +102,5 @@ int	find_min(t_list *a)
 	}
 	return (min);
 }
+
+//Poner num < -2147483648 en parse por que en linux es diferente a mac

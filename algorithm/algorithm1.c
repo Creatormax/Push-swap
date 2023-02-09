@@ -6,16 +6,18 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:50:27 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/04 17:23:33 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:03:49 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	cycle(t_list **a, int num)
+void	cycle_a(t_list **a, int num)
 {
 	int	i;
-
+	
+	if (num < 0)
+		num--;
 	i = ft_abs(num);
 	while (i > 0)
 	{
@@ -27,31 +29,68 @@ void	cycle(t_list **a, int num)
 	}
 }
 
-void	analyze_b(t_list **b, t_list **a)
+void	cycle_b(t_list **b, int num)
 {
-	int	max;
-	int	min;
+	int	i;
+	
+	if (num < 0)
+		num--;
+	i = ft_abs(num);
+	while (i > 0)
+	{
+		if (num < 0)
+			rev_rotate(b, "rrb\n");
+		else
+			rotate(b, "rb\n");
+		i--;
+	}
+}
 
-	max = find_max(*b);
-	if (((t_stack *)(*a)->content)->num > max)
+void	find_waldo(t_list **a, t_list **b, int num)
+{
+	int	fw;
+	int	bw;
+
+	fw = position_list_fw(*b, num, num);
+	bw = position_list_bw(*b, num, num);
+	if (ft_abs(fw) > ft_abs(bw))
+	{
+		cycle_b(b, bw);
 		push(a, b, "pb\n");
+		cycle_b(b, -1 * (bw + 1));
+
+	}
 	else
 	{
-		min = find_min(*b);
-		if (((t_stack *)(*a)->content)->num < min)
-		{;
-			push(a, b, "pb\n");
-			rotate(b, "rrb\n");
-		}
-		else
-		{
-			rev_rotate(b, "rrb\n");
-			push(a, b, "pb\n");
-			rotate(b, "rb\n");
-			rotate(b, "rb\n");
-		}
+		cycle_b(b, fw);
+		push(a, b, "pb\n");
+		cycle_b(b, -1 * (fw + 1));
 	}
+}
+
+void	analyze_b(t_list *b, t_list *a)
+{
+	int	num_a;
+	int	num_b;
+	int	desired;
 	
+	num_a = ((t_stack *)(a)->content)->num;
+	desired = find_min(b);
+	while(b->next)
+	{
+		num_b = ((t_stack *)(b)->content)->num;
+		if ((num_b < num_a) && (num_b > desired))
+			desired = num_b;
+		b = b->next;
+	}
+	b = ft_lstfirst(b);
+	if (desired > num_a)
+	{
+		push(&a, &b, "pb\n");
+		rotate(&b, "rb\n");
+	}
+	//else
+	//	find_waldo(&a, &b, desired);
 }
 
 void	sort100(t_list **a, t_list **b, int div)
@@ -59,27 +98,28 @@ void	sort100(t_list **a, t_list **b, int div)
 	int	fst;
 	int	lst;
 	int	i;
-	int	j;
+	//int	j;
 	int	og;
 
 	fst = find_min(*a);
-	j = find_max(*a);
+	//j = find_max(*a);
 	i = ft_lstsize(*a) / div;
 	og = i;
 	lst = i + fst - 1;
-	while (fst < j)
+	while (fst < 7)
 	{
 		while (i > 0)
 		{
 			if (ft_abs(position_list_fw(*a, fst, lst)) \
 			> ft_abs(position_list_bw(*a, fst, lst)))
-				cycle(a, position_list_bw(*a, fst, lst));
+				cycle_a(a, position_list_bw(*a, fst, lst));
 			else
-				cycle(a, position_list_fw(*a, fst, lst));
+				cycle_a(a, position_list_fw(*a, fst, lst));
 			if (ft_lstsize(*b) >= 2)
-				analyze_b(b, a);
+				analyze_b(*b, *a);
 			else
 				push(a, b, "pb\n");
+			//print_stacks(*a, *b);
 			i--;
 		}
 		i = og;
