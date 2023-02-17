@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:33:51 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/08 10:30:31 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:55:37 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	parse(char *str)
 
 	num = 0;
 	num = ft_atoi(str);
-	if (num > 2147483647 || num < -2147483647)
+	if (num > 2147483647 || num < -2147483648)
 		ft_errormsg("Int overflow detected");
 }
 

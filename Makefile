@@ -4,11 +4,12 @@ SRCS	=	push_swap.c \
 			algorithm/operations.c \
 			algorithm/algorithm.c \
 			algorithm/algorithm1.c \
+			algorithm/algorithm2.c \
 			tools/tools.c \
 			tools/tools1.c \
 			
 
-FLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -O0
+FLAGS	=	-Wall -Wextra -Werror #-g3 -fsanitize=address -O0
 
 OBJS	=	$(SRCS:.c=.o)
 

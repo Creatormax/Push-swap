@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/09 20:01:32 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:30:56 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ int	main(int argc, char **argv)
 	a = initializer(argc, argv, &a, &copy);
 	print_stacks(a, b);
 	process(&a, &b);
-	//print_stacks(a, b);
+	print_stacks(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:50:27 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/15 10:08:42 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:07:35 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	cycle_a(t_list **a, int num)
 {
 	int	i;
 	
-	if (num < 0)
-		num--;
 	i = ft_abs(num);
 	while (i > 0)
 	{
@@ -32,9 +30,7 @@ void	cycle_a(t_list **a, int num)
 void	cycle_b(t_list **b, int num)
 {
 	int	i;
-	
-	if (num < 0)
-		num--;
+
 	i = ft_abs(num);
 	while (i > 0)
 	{
@@ -57,40 +53,37 @@ void	find_waldo(t_list **a, t_list **b, int num)
 	{
 		cycle_b(b, bw);
 		push(a, b, "pb\n");
-		cycle_b(b, -1 * (bw + 1));
-
 	}
 	else
 	{
 		cycle_b(b, fw);
 		push(a, b, "pb\n");
-		cycle_b(b, -1 * (fw + 1));
 	}
 }
 
-void	analyze_b(t_list *b, t_list *a)
+void	analyze_b(t_list **b, t_list **a)
 {
 	int	num_a;
 	int	num_b;
 	int	desired;
 	
-	num_a = ((t_stack *)(a)->content)->num;
-	desired = find_min(b);
-	while(b->next)
+	num_a = ((t_stack *)(*a)->content)->num;
+	desired = find_min(*b);
+	while((*b)->next)
 	{
-		num_b = ((t_stack *)(b)->content)->num;
+		num_b = ((t_stack *)(*b)->content)->num;
 		if ((num_b < num_a) && (num_b > desired))
 			desired = num_b;
-		b = b->next;
+		*b = (*b)->next;
 	}
-	b = ft_lstfirst(b);
+	*b = ft_lstfirst(*b);
 	if (desired > num_a)
 	{
-		push(&a, &b, "pb\n");
-		rotate(&b, "rb\n");
+		push(a, b, "pb\n");
+		rotate(b, "rb\n");
 	}
-	//else
-	//	find_waldo(&a, &b, desired);
+	else
+		find_waldo(a, b, desired);
 }
 
 void	sort100(t_list **a, t_list **b, int div)
@@ -98,15 +91,15 @@ void	sort100(t_list **a, t_list **b, int div)
 	int	fst;
 	int	lst;
 	int	i;
-	//int	j;
+	int	j;
 	int	og;
 
 	fst = find_min(*a);
-	//j = find_max(*a);
+	j = find_max(*a);
 	i = ft_lstsize(*a) / div;
 	og = i;
 	lst = i + fst - 1;
-	while (fst < 7)
+	while (fst < j)
 	{
 		while (i > 0)
 		{
@@ -116,7 +109,11 @@ void	sort100(t_list **a, t_list **b, int div)
 			else
 				cycle_a(a, position_list_fw(*a, fst, lst));
 			if (ft_lstsize(*b) >= 2)
-				analyze_b(*b, *a);
+			{
+				if (((t_stack *)(*b)->content)->num < ((t_stack *)(*b)->next->content)->num)
+					swap(b, "sb\n");
+				analyze_b(b, a);
+			}
 			else
 				push(a, b, "pb\n");
 			print_stacks(*a, *b);

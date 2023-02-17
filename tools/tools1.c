@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:36:14 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/09 18:47:26 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:30:46 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	position_list_bw(t_list *a, int ni, int nf)
 	int	num;
 	int	size;
 
-	i = 0;
+	i = 1;
 	size = ft_lstsize(a);
 	a = ft_lstlast(a);
 	while (a->prior && (i < size))

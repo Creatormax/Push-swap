@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:38 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/04 15:15:09 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:29:16 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,18 @@ void	sort2(t_list **a)
 
 void	process(t_list **a, t_list **b)
 {
-	//int	max;
-	//int	min;
-//
-	//max = find_max(*a);
-	//min = find_min(*a);
-	//if (ft_lstsize(*a) == 2)
-	//	sort2(a);
-	//else if (ft_lstsize(*a) == 3)
-	//	sort3(a, max, min);
-	//else if (ft_lstsize(*a) == 5)
-	//	sort5(a, b, max, min);
-	sort100(a, b, 5);
+	int	max;
+	int	min;
+
+	max = find_max(*a);
+	min = find_min(*a);
+	if (ft_lstsize(*a) == 2)
+		sort2(a);
+	else if (ft_lstsize(*a) == 3)
+		sort3(a, max, min);
+	else if (ft_lstsize(*a) == 5)
+		sort5(a, b, max, min);
+	else if (ft_lstsize(*a) > 5)
+		sort100(a, b, 1);
+	sort_check(a, b);
 }

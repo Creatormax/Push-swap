@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:13:09 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/04 15:14:49 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:54:49 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int		position_list_fw(t_list *a, int ni, int nf);
 int		position_list_bw(t_list *a, int ni, int nf);
 t_list	*b_not_included(t_list *b);
 void	sort100(t_list **a, t_list **b, int div);
+void	sort2(t_list **a);
+void	sort_check(t_list **a, t_list **b);
 
 #endif
