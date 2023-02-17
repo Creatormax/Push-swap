@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:50:27 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/09 20:03:49 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:08:42 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	sort100(t_list **a, t_list **b, int div)
 				analyze_b(*b, *a);
 			else
 				push(a, b, "pb\n");
-			//print_stacks(*a, *b);
+			print_stacks(*a, *b);
 			i--;
 		}
 		i = og;
