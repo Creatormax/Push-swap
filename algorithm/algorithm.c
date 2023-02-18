@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:38 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/17 12:29:16 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:29:12 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,14 @@ void	process(t_list **a, t_list **b)
 		sort3(a, max, min);
 	else if (ft_lstsize(*a) == 5)
 		sort5(a, b, max, min);
-	else if (ft_lstsize(*a) > 5)
-		sort100(a, b, 1);
-	sort_check(a, b);
+	else if ((ft_lstsize(*a) > 5) && (ft_lstsize(*a) <= 100))
+	{
+		sort100(a, b, 7);
+		sort_check(a, b);
+	}
+	else if (ft_lstsize(*a) > 100)
+	{
+		sort100(a, b, 12);
+		sort_check(a, b);
+	}
 }
