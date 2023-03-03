@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 10:13:55 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/04 11:22:33 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:33:32 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	rotate(t_list **a, char *op)
 	copy->next = *a;
 	(*a)->prior = copy;
 	(*a)->next->prior = NULL;
+	free((*a)->next->prior);
 	(*a)->next = NULL;
+	free((*a)->next);
 	*a = ft_lstfirst(*a);
 	write(1, op, ft_strlen(op));
 }
@@ -75,7 +77,9 @@ void	rev_rotate(t_list **a, char *op)
 	copy->next = *a;
 	(*a)->prior = copy;
 	copy->prior->next = NULL;
+	free(copy->prior->next);
 	copy->prior = NULL;
+	free(copy->prior);
 	*a = ft_lstfirst(*a);
 	write(1, op, ft_strlen(op));
 }

@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:13:09 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/18 16:50:36 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:47:43 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	cycle_b(t_list **b, int num);
 void	cycle_a(t_list **a, int num);
 void	curator(t_list **a, t_list **b, int fst, int lst);
 void	absurd_math(int *fst, int *lst, int *i, int og);
+void	terminator(t_list **a);
 
 #endif

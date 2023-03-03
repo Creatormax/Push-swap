@@ -9,7 +9,7 @@ SRCS	=	push_swap.c \
 			tools/tools1.c \
 			
 
-FLAGS	=	-Wall -Wextra -Werror #-g3 -fsanitize=address -O0
+FLAGS	=	-Wall -Wextra -Werror -g3 #-fsanitize=address -O0
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:18:33 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/18 16:30:56 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:49:55 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		ft_errormsg("Please submit a stack");
 	a = initializer(argc, argv, &a, &copy);
+	terminator (&copy);
 	process(&a, &b);
 }

@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:36:14 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/18 16:13:59 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:49:11 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,21 @@ int	position_list_bw(t_list *a, int ni, int nf)
 	else
 		i = i * (-1);
 	return (i);
+}
+
+void	terminator(t_list **a)
+{
+	int	i;
+	int	size;
+
+	size = ft_lstsize(*a);
+	i = 0;
+	while (size > i)
+	{
+		free((t_stack *)(*a)->content);
+		free((t_stack *)(*a));
+		i++;
+		(*a) = (*a)->next;
+	}
+	free(*a);
 }

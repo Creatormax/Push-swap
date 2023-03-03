@@ -6,7 +6,7 @@
 /*   By: hmorales <hmorales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:38 by hmorales          #+#    #+#             */
-/*   Updated: 2023/02/18 16:29:12 by hmorales         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:29:46 by hmorales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,6 @@ void	process(t_list **a, t_list **b)
 		sort100(a, b, 12);
 		sort_check(a, b);
 	}
+	terminator(a);
+	terminator(b);
 }
